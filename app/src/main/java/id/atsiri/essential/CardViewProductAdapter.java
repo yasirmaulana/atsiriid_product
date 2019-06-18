@@ -1,7 +1,9 @@
 package id.atsiri.essential;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,15 +41,14 @@ public class CardViewProductAdapter extends RecyclerView.Adapter<CardViewProduct
     @Override
     public void onBindViewHolder(@NonNull CardViewProductAdapter.CardViewViewHolder cardViewViewHolder, int i) {
         Product p = getLisProduct().get(i);
+        final String photoUrl = p.getPhoto();
 
         Glide.with(context)
                 .load(p.getPhoto())
                 .apply(new RequestOptions().override(350, 550))
                 .into(cardViewViewHolder.imgPhoto);
-
         cardViewViewHolder.tvName.setText(p.getName());
         cardViewViewHolder.tvRemarks.setText(p.getRemark());
-
         cardViewViewHolder.btnAddToCart.setOnClickListener(new CustomOnItemClickListener(i, new CustomOnItemClickListener.OnItemClickCallback() {
             @Override
             public void onItemClicked(View view, int position) {
@@ -60,6 +61,17 @@ public class CardViewProductAdapter extends RecyclerView.Adapter<CardViewProduct
                 Toast.makeText(context, "Buy "+getLisProduct().get(position).getName(), Toast.LENGTH_SHORT).show();
             }
         }));
+        cardViewViewHolder.cardView.setOnClickListener(new CustomOnItemClickListener(i, new CustomOnItemClickListener.OnItemClickCallback() {
+            @Override
+            public void onItemClicked(View view, int position) {
+                Toast.makeText(context, "on click carview coy ", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("image_url", photoUrl);
+                context.startActivity(intent);
+            }
+        }));
+
     }
 
     @Override
@@ -71,6 +83,8 @@ public class CardViewProductAdapter extends RecyclerView.Adapter<CardViewProduct
         ImageView imgPhoto;
         TextView tvName, tvRemarks;
         Button btnAddToCart, btnBuy;
+        CardView cardView;
+
         CardViewViewHolder(@NonNull View itemView) {
             super(itemView);
             imgPhoto = itemView.findViewById(R.id.img_item_photo);
@@ -78,6 +92,7 @@ public class CardViewProductAdapter extends RecyclerView.Adapter<CardViewProduct
             tvRemarks = itemView.findViewById(R.id.tv_item_remarks);
             btnAddToCart = itemView.findViewById(R.id.btn_addto_cart);
             btnBuy = itemView.findViewById(R.id.btn_buy);
+            cardView = itemView.findViewById(R.id.card_view);
         }
     }
 }
