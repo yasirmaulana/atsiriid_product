@@ -42,6 +42,9 @@ public class ProductData {
             product.setName(aData[0]);
             product.setRemark(aData[1]);
             product.setPhoto(aData[2]);
+            product.setPrice(aData[3]);
+            product.setManfaatutama(aData[4]);
+            product.setManfaatlain(aData[5]);
 
             list.add(product);
         }

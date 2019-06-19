@@ -1,26 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="100">
 
-    <ImageView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="70"
-        android:id="@+id/image_product"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher"/>
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/image_description"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:text="Product-Name"
-        android:textSize="20sp"
-        android:textColor="#000"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_weight="70"
+            android:id="@+id/image_product"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher"/>
 
-</LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/image_description"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Product-Name"
+            android:textSize="20sp"
+            android:textColor="#000"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/product_price"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Product-Price"
+            android:textSize="30sp"
+            android:textColor="#f00"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Manfaat Utama :"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/manfaat_utama"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Manfaat-Utama"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Manfaat Lainnya :"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/manfaat_lain"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Manfaat-Lainnya"
+            android:textSize="18sp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/buy" />
+
+    </LinearLayout>
+
+</ScrollView>

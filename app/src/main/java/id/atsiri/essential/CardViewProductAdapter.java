@@ -42,6 +42,10 @@ public class CardViewProductAdapter extends RecyclerView.Adapter<CardViewProduct
     public void onBindViewHolder(@NonNull CardViewProductAdapter.CardViewViewHolder cardViewViewHolder, int i) {
         Product p = getLisProduct().get(i);
         final String photoUrl = p.getPhoto();
+        final String productTitle = p.getName();
+        final String productPrice = p.getPrice();
+        final String manfaatUtama = p.getManfaatutama();
+        final String manfaatLain = p.getManfaatlain();
 
         Glide.with(context)
                 .load(p.getPhoto())
@@ -64,10 +68,14 @@ public class CardViewProductAdapter extends RecyclerView.Adapter<CardViewProduct
         cardViewViewHolder.cardView.setOnClickListener(new CustomOnItemClickListener(i, new CustomOnItemClickListener.OnItemClickCallback() {
             @Override
             public void onItemClicked(View view, int position) {
-                Toast.makeText(context, "on click carview coy ", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "on click carview coy ", Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(context, DetailActivity.class);
                 intent.putExtra("image_url", photoUrl);
+                intent.putExtra("product_title", productTitle);
+                intent.putExtra("product_price", productPrice);
+                intent.putExtra("manfaat_utama", manfaatUtama);
+                intent.putExtra("manfaat_lain", manfaatLain);
                 context.startActivity(intent);
             }
         }));
